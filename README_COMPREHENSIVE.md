@@ -5,21 +5,21 @@
 ![Calibration](https://img.shields.io/badge/Model-Temperature%20Scaling-orange)
 ![HIPAA](https://img.shields.io/badge/HIPAA-Compliant-red)
 
-## 🏥 Overview
+##  Overview
 
 This is a production-level medical conversation analysis system that uses advanced AI techniques to analyze patient-doctor conversations and predict patient satisfaction scores. The system features **Temperature Scaling Calibration** to correct neural network overconfidence and provide well-calibrated probability estimates for medical decision support.
 
-### 🎯 Key Features
+###  Key Features
 
-- **🧠 Temperature Scaling Calibration**: Advanced probability calibration using T=1.5 parameter
-- **🗣️ Real-time Audio Analysis**: Whisper-based transcription with speaker diarization
-- **🌍 Multilingual Support**: XLM-RoBERTa for cross-lingual sentiment analysis
-- **🔒 HIPAA Compliance**: Automated PHI scrubbing and data protection
-- **⚖️ Bias Detection**: Multi-dimensional bias analysis and mitigation
-- **📊 Advanced Analytics**: Comprehensive satisfaction scoring and phase analysis
-- **🎨 Interactive UI**: Gradio-based web interface with real-time results
+- ** Temperature Scaling Calibration**: Advanced probability calibration using T=1.5 parameter
+- ** Real-time Audio Analysis**: Whisper-based transcription with speaker diarization
+- ** Multilingual Support**: XLM-RoBERTa for cross-lingual sentiment analysis
+- ** HIPAA Compliance**: Automated PHI scrubbing and data protection
+- ** Bias Detection**: Multi-dimensional bias analysis and mitigation
+- ** Advanced Analytics**: Comprehensive satisfaction scoring and phase analysis
+- ** Interactive UI**: Gradio-based web interface with real-time results
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 ### Core Components
 
@@ -49,9 +49,9 @@ This is a production-level medical conversation analysis system that uses advanc
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 File Structure & Responsibilities
+##  File Structure & Responsibilities
 
-### 🎮 `app.py` - Main Application Controller
+###  `app.py` - Main Application Controller
 
 The primary Gradio application that orchestrates the entire analysis pipeline:
 
@@ -108,7 +108,7 @@ BIAS_CATEGORIES = [
 ]
 ```
 
-### 🧠 Fine-tuned Models
+###  Fine-tuned Models
 
 #### 1. **DistilBERT Speaker Classification**
 - **Location**: `./distilbert-finetuned-patient/`
@@ -135,9 +135,9 @@ BIAS_CATEGORIES = [
 - **Purpose**: Speaker identification and segmentation
 - **Output**: Speaker-labeled audio segments
 
-## 📊 Training Data & Fine-tuning Process
+##  Training Data & Fine-tuning Process
 
-### 🎯 Training Datasets
+###  Training Datasets
 
 #### 1. **Medical Conversation Dataset**
 ```
@@ -176,7 +176,7 @@ Data Sources:
 - Patient-doctor interaction logs
 ```
 
-### 🔧 Fine-tuning Configurations
+###  Fine-tuning Configurations
 
 #### DistilBERT Patient Sentiment Fine-tuning:
 ```python
@@ -208,7 +208,7 @@ distilbert-base-uncased + Classification Head
 - Reliability Diagram: Well-calibrated across confidence ranges
 ```
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 ```bash
@@ -237,7 +237,7 @@ python -c "import whisper; whisper.load_model('base')"
 python app.py
 ```
 
-### 🔧 Configuration
+###  Configuration
 
 #### Environment Variables:
 ```bash
@@ -266,9 +266,9 @@ MODEL_PATHS = {
 }
 ```
 
-## 📈 Temperature Scaling Calibration Deep Dive
+##  Temperature Scaling Calibration Deep Dive
 
-### 🎯 Problem: Neural Network Overconfidence
+###  Problem: Neural Network Overconfidence
 
 Modern neural networks, especially transformer models, tend to be **overconfident** in their predictions. For medical applications, this is critical because:
 
@@ -276,7 +276,7 @@ Modern neural networks, especially transformer models, tend to be **overconfiden
 2. **Trust**: Clinicians need reliable uncertainty estimates
 3. **Decision Support**: Probability calibration enables better risk assessment
 
-### 🧮 Mathematical Foundation
+###  Mathematical Foundation
 
 **Temperature Scaling Formula:**
 ```
@@ -296,7 +296,7 @@ T* = argmin_T NLL(calibrated_predictions, true_labels)
 Where NLL is the Negative Log-Likelihood
 ```
 
-### 📊 Calibration Performance
+###  Calibration Performance
 
 **Before Calibration (Raw XLM-RoBERTa):**
 - Expected Calibration Error (ECE): 0.12
@@ -308,7 +308,7 @@ Where NLL is the Negative Log-Likelihood
 - Maximum Calibration Error (MCE): 0.08
 - Well-calibrated across all confidence ranges
 
-### 🎛️ Temperature Parameter Selection
+###  Temperature Parameter Selection
 
 **T = 1.5 for Medical Conversations:**
 - Validated on 2,000+ medical conversation segments
@@ -316,9 +316,9 @@ Where NLL is the Negative Log-Likelihood
 - Optimized for patient satisfaction prediction task
 - Balances calibration improvement with accuracy preservation
 
-## 🔒 HIPAA Compliance & Security
+##  HIPAA Compliance & Security
 
-### 🛡️ PHI Protection
+###  PHI Protection
 
 **Automated PHI Scrubbing:**
 ```python
@@ -338,16 +338,16 @@ def scrub_phi(text):
     return text
 ```
 
-### 🔐 Data Handling
+###  Data Handling
 
 - **No Persistent Storage**: Audio processed in memory only
 - **Encryption**: All data encrypted in transit and at rest
 - **Access Control**: Role-based access with audit logging
 - **Anonymization**: Automatic removal of identifying information
 
-## ⚖️ Bias Detection & Mitigation
+##  Bias Detection & Mitigation
 
-### 🔍 Bias Categories Monitored
+###  Bias Categories Monitored
 
 1. **Gender Bias**: Language patterns indicating gender stereotypes
 2. **Age Bias**: Ageist language or assumptions
@@ -355,7 +355,7 @@ def scrub_phi(text):
 4. **Linguistic Bias**: Discrimination based on language proficiency
 5. **Socioeconomic Bias**: Assumptions based on economic status
 
-### 📊 Bias Metrics
+###  Bias Metrics
 
 ```python
 BIAS_INDICATORS = {
@@ -370,9 +370,9 @@ BIAS_INDICATORS = {
 bias_score = (detected_indicators / total_segments) * severity_weight
 ```
 
-## 🎨 User Interface & Experience
+##  User Interface & Experience
 
-### 🖥️ Gradio Web Interface
+###  Gradio Web Interface
 
 **Main Components:**
 1. **Audio Upload**: Drag-and-drop WAV file support
@@ -381,21 +381,21 @@ bias_score = (detected_indicators / total_segments) * severity_weight
 4. **Download Options**: CSV export and detailed reports
 
 **UI Panels:**
-- **📝 Conversation Transcript**: Speaker-labeled dialogue with sentiment indicators
-- **😊 Satisfaction Analysis**: Calibrated satisfaction scores with confidence intervals  
-- **📊 Phase Analysis**: Treatment phase identification and progression
-- **🔒 Compliance Report**: HIPAA compliance status and bias detection results
-- **📈 Summary Dashboard**: Comprehensive analytics and recommendations
+- ** Conversation Transcript**: Speaker-labeled dialogue with sentiment indicators
+- ** Satisfaction Analysis**: Calibrated satisfaction scores with confidence intervals  
+- ** Phase Analysis**: Treatment phase identification and progression
+- ** Compliance Report**: HIPAA compliance status and bias detection results
+- ** Summary Dashboard**: Comprehensive analytics and recommendations
 
-### 🎯 Results Interpretation
+###  Results Interpretation
 
 **Satisfaction Score Ranges:**
 ```
-≥ 85: Very High Satisfaction 😊 - Excellent patient experience
-≥ 70: High Satisfaction 🙂 - Good patient experience  
-≥ 55: Moderate Satisfaction 😐 - Average patient experience
-≥ 40: Low Satisfaction 😞 - Concerning patient experience
-< 40: Very Low Satisfaction 😟 - Critical patient experience
+≥ 85: Very High Satisfaction  - Excellent patient experience
+≥ 70: High Satisfaction  - Good patient experience  
+≥ 55: Moderate Satisfaction  - Average patient experience
+≥ 40: Low Satisfaction - Concerning patient experience
+< 40: Very Low Satisfaction  - Critical patient experience
 ```
 
 **Confidence Indicators:**
@@ -403,9 +403,9 @@ bias_score = (detected_indicators / total_segments) * severity_weight
 - **Moderate Confidence (0.6-0.8)**: Reliable with some uncertainty
 - **Low Confidence (<0.6)**: Uncertain prediction, manual review recommended
 
-## 🔬 Performance & Optimization
+##  Performance & Optimization
 
-### ⚡ Performance Metrics
+###  Performance Metrics
 
 **Processing Speed:**
 - Audio Transcription: ~2-3x real-time
@@ -424,7 +424,7 @@ bias_score = (detected_indicators / total_segments) * severity_weight
 - Satisfaction Prediction: 0.03 calibration error
 - Overall System Reliability: 94%
 
-### 🚀 Optimization Features
+###  Optimization Features
 
 **Intelligent Caching:**
 ```python
@@ -445,9 +445,9 @@ class AdvancedCache:
 - **GPU Acceleration**: CUDA optimization for transformer models
 - **Memory Management**: Automatic garbage collection and model offloading
 
-## 🧪 Testing & Validation
+##  Testing & Validation
 
-### 📊 Evaluation Framework
+###  Evaluation Framework
 
 **Test Datasets:**
 1. **Validation Set**: 500 manually labeled medical conversations
@@ -465,7 +465,7 @@ EVALUATION_METRICS = {
 }
 ```
 
-### 🔍 Continuous Monitoring
+###  Continuous Monitoring
 
 **Production Monitoring:**
 - Real-time calibration drift detection
@@ -473,9 +473,9 @@ EVALUATION_METRICS = {
 - Performance degradation alerts
 - Automated model retraining triggers
 
-## 🚀 Deployment & Scaling
+##  Deployment & Scaling
 
-### 🌐 Deployment Options
+###  Deployment Options
 
 **1. Local Development:**
 ```bash
@@ -496,7 +496,7 @@ CMD ["python", "app.py"]
 - **AWS/Azure**: Container-based scaling
 - **Kubernetes**: Multi-replica production deployment
 
-### 📈 Scaling Considerations
+###  Scaling Considerations
 
 **Horizontal Scaling:**
 - Stateless design enables easy replication
@@ -509,9 +509,9 @@ CMD ["python", "app.py"]
 - GPU: Optional but recommended for speed
 - Storage: 50GB+ for models and cache
 
-## 🤝 Contributing & Development
+##  Contributing & Development
 
-### 🛠️ Development Setup
+###  Development Setup
 
 ```bash
 # Development dependencies
@@ -530,7 +530,7 @@ black . && isort .
 mypy app.py new_sentiment.py
 ```
 
-### 📝 Code Structure Guidelines
+###  Code Structure Guidelines
 
 **Key Principles:**
 1. **Separation of Concerns**: UI logic separate from ML processing
@@ -539,9 +539,9 @@ mypy app.py new_sentiment.py
 4. **Testing**: Unit tests for all critical functions
 5. **Performance**: Profiling and optimization for production use
 
-## 📚 References & Citations
+##  References & Citations
 
-### 🎓 Academic Background
+###  Academic Background
 
 **Temperature Scaling:**
 - Guo, C., et al. "On Calibration of Modern Neural Networks." ICML 2017.
@@ -555,16 +555,16 @@ mypy app.py new_sentiment.py
 - Obermeyer, Z., et al. "Dissecting Racial Bias in Healthcare Algorithm." Science 2019.
 - Larrazabal, A.J., et al. "Gender Imbalance in Medical Imaging." PNAS 2020.
 
-### 🔗 Model Sources
+###  Model Sources
 
 - **XLM-RoBERTa**: [Cardiff NLP Twitter Sentiment](https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual)
 - **Whisper**: [OpenAI Whisper](https://github.com/openai/whisper)
 - **PyAnnote**: [Speaker Diarization](https://github.com/pyannote/pyannote-audio)
 - **DistilBERT**: [Hugging Face DistilBERT](https://huggingface.co/distilbert-base-uncased)
 
-## 📞 Support & Contact
 
-### 🆘 Getting Help
+
+###  Getting Help
 
 **Issues & Bugs:**
 - GitHub Issues for bug reports
@@ -584,11 +584,11 @@ mypy app.py new_sentiment.py
 
 ---
 
-## 📄 License
+##  License
 
 MIT License - See [LICENSE](LICENSE) file for details.
 
-## 🏆 Acknowledgments
+##  Acknowledgments
 
 - **OpenAI** for Whisper speech recognition
 - **Hugging Face** for transformer model ecosystem  
@@ -598,10 +598,11 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 ---
 
-*Built with ❤️ for healthcare professionals and patients worldwide.*
+*Built with love for healthcare professionals and patients worldwide.*
 
 **Version**: 3.0.0  
 **Last Updated**: October 2025  
 **Calibration Method**: Temperature Scaling (T=1.5)  
 **HIPAA Compliance**: ✅ Verified  
+
 **Production Ready**: ✅ Tested
