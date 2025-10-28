@@ -1,27 +1,4 @@
 
-sdk: gradio
-sdk_version: 4.0.0
-app_file: app.py
-pinned: false
-license: mit
-models:
-  - openai/whisper-base
-  - pyannote/speaker-diarization-3.1
-  - cardiffnlp/twitter-xlm-roberta-base-sentiment-multilingual
-  - distilbert-base-uncased
-tags:
-  - medical
-  - healthcare
-  - sentiment-analysis
-  - speech-recognition
-  - conversation-analysis
-  - patient-satisfaction
-  - treatment-analysis
-  - multilingual
-  - HIPAA-compliant
-short_description: Advanced AI-powered medical conversation analysis with sentiment analysis, treatment phase detection, and patient satisfaction scoring
----
-
 # � Medical Conversation Analyzer
 
 **Advanced AI-Powered Medical Conversation Analysis Platform**
@@ -167,3 +144,4 @@ For questions or support, please open an issue in the repository.
 ---
 
 **⚠️ Disclaimer**: This tool is for research and educational purposes. Always consult with healthcare professionals for medical decisions.
+
